@@ -1,0 +1,84 @@
+<%- include('../partials/header_admin'); -%>
+
+<div class="wrapper">
+  <header>Barangay Officials</header>
+  <input type="radio" name="slider" checked id="update" />
+  <input type="radio" name="slider" id="delete" />
+
+  <nav>
+    <label for="update" class="updates"><i class="uil uil-edit"></i>Edit</label>
+    <a
+      for="delete"
+      class="deletes"
+      href="/admin/profiles/settings/delete/<%= profile_info._id %>"
+      onclick="return confirm('Are you sure to delete this record ?');"
+      ><i class="uil uil-trash-alt"></i>Delete</a
+    >
+    <div class="slider"></div>
+  </nav>
+
+  <section>
+    <div class="content updateForm">
+      <div class="wrappers">
+        <form
+          action="/admin/profiles/settings"
+          method="POST"
+          class="form"
+          autocomplete="off"
+        >
+          <input type="hidden" name="_id" value="<%= profile_info._id %>" />
+          <div class="inputfield">
+            <label>Name</label>
+            <input
+              type="text"
+              class="input"
+              name="name"
+              value="<%= profile_info.name %>"
+            />
+          </div>
+          <div class="inputfield">
+            <label>Contact No.</label>
+            <input
+              type="text"
+              class="input"
+              name="contact"
+              value="<%= profile_info.contact %>"
+            />
+          </div>
+          <div class="inputfield">
+            <label>Email</label>
+            <input
+              type="email"
+              class="input"
+              name="email"
+              value="<%= profile_info.email %>"
+            />
+          </div>
+
+          <div class="inputfield">
+            <label>Position</label>
+            <div class="custom_select">
+              <select name="position">
+                <option value="<%= profile_info.position %>">
+                  <%= profile_info.position %>
+                </option>
+                <option value="Punong Barangay">Punong Barangay</option>
+                <option value="Sangguniang Barangay Member">
+                  Sangguniang Barangay Member
+                </option>
+                <option value="SK Chairperson">SK Chairperson</option>
+                <option value="Barangay Secretary">Barangay Secretary</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="inputfield">
+            <button type="submit" class="btn">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<%-include('../partials/footer_admin'); -%>

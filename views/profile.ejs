@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%> <%- include('partials/nav'); -%> 
+<h1 id="Header__Profile">Barangay Officials</h1>
+<div class="ProfileTable">
+  <hr />
+  <table>
+    <tr id="header">
+      <th>Name</th>
+      <th>Position</th>
+      <th>Email</th>
+      <th>Contact</th>
+    </tr>
+    <% if (profile.length > 0) { %> <% for(let i =0; i < profile.length; i++){ %>
+    <tr class="tbody">
+      <td><%= profile[i].name %></td>
+      <td><%= profile[i].position %></td>
+      <td><%= profile[i].email %></td>
+      <td><%= profile[i].contact %></td>
+    </tr>
+  
+    <% } %> <% } else { %>
+    <tr>
+      <td class="centre" colspan="4">There are no profile to display...</td>
+    </tr>
+    <% } %>
+    </tr>
+  </table>
+
+</div>
+<%-include('partials/footer'); -%>

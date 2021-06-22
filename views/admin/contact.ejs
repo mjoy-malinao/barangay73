@@ -1,0 +1,32 @@
+<%- include('../partials/header_admin'); -%>
+
+<table id="JavaScriptTable">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Contact No.</th>
+    <th>Action</th>
+  </tr>
+
+  <% if (contact.length > 0) { %> <% for(let i =0; i < contact.length; i++){ %>
+
+  <tr>
+    <td><%= contact[i].name %></td>
+    <td><%= contact[i].email %></td>
+    <td><%= contact[i].contact %></td>
+
+    <td>
+      <a class="single" href="/admin/contact/settings/<%= contact[i]._id %>">
+        <i class="uil uil-edit set__icon"></i>
+      </a>
+    </td>
+  </tr>
+
+  <% } %> <% } else { %>
+  <tr>
+    <td class="centre" colspan="5">There are no message to display...</td>
+  </tr>
+  <% } %>
+</table>
+
+<%-include('../partials/footer_admin'); -%>

@@ -1,0 +1,39 @@
+<%- include('partials/header'); -%> <%- include('partials/nav'); -%>
+
+<h1 id="Header__Profile">Contact Us</h1>
+<div class="wrapps">
+  <form class="form" action="/barangay73caloocan-contact" method="POST">
+    <div class="top-form">
+      <div class="inner-form">
+        <div class="label">name</div>
+        <input type="text" name="name" placeholder="(Required)" required />
+      </div>
+      <div class="inner-form">
+        <div class="label">email</div>
+        <input type="email" name="email" placeholder="(Required)" required />
+      </div>
+      <div class="inner-form">
+        <div class="label">phone</div>
+        <input type="number" name="contact" placeholder="(Required)" required />
+      </div>
+    </div>
+
+    <div class="middle-form">
+      <div class="inner-form">
+        <div class="label hey">subject</div>
+        <input type="text" name="subject" placeholder="(Optional)" />
+      </div>
+    </div>
+
+    <div class="bottom-form">
+      <div class="inner-form">
+        <div class="label">message</div>
+        <textarea name="message" placeholder="(Optional)"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">send form</button>
+  </form>
+</div>
+
+<%-include('partials/footer'); -%>

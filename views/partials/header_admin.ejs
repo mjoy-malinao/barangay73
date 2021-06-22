@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ===== Icon in the title bar ===== -->
+    <link rel="shortcut icon" href="/img/logo.png" />
+    <!-- ===== BOX ICONS ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/css/styles_admin.css" />
+    <title>Admin | <%= title %></title>
+  
+  </head>
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header__toggle">
+        <i class="uil uil-list-ul" id="header-toggle"></i>
+
+      </div>
+      <h3 class="hed"><%= user.email %></h3>
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="#" class="nav__logo">
+            <div class="header__img2">
+                <img src="/img/logo.png" alt="" />
+              </div>
+            <span class="nav__logo-name">Barangay 73</span>
+          </a>
+
+          <div class="nav__list">
+
+            <!-- -----------------Profile Page----------------- -->
+            <% if (title === 'Profiles' || title === 'Settings') { %>
+            <a href="/admin/profiles" class="nav__link active">
+              <i class="uil uil-user nav__icon acti"></i>
+              <span class="nav__name">Profiles</span>
+            </a>
+            <% } else {%>
+            <a href="/admin/profiles" class="nav__link">
+              <i class="uil uil-user nav__icon "></i>
+              <span class="nav__name">Profiles</span>
+            </a> 
+            <% } %>
+           <!----------------------------------------------------->
+
+           <!-- -----------------Program Page----------------- -->
+            <% if (title === 'Programs') { %>
+              <a href="/admin/programs" class="nav__link active">
+                <i class="uil uil-list-ul nav__icon acti"></i>
+                <span class="nav__name">Programs</span>
+              </a>
+              <% } else {%>
+              <a href="/admin/programs" class="nav__link">
+                <i class="uil uil-list-ul nav__icon"></i>
+                <span class="nav__name">Programs</span>
+              </a> 
+              <% } %>
+            <!----------------------------------------------------->
+
+               <!-- -----------------Gallery Page----------------- -->
+               <% if (title === 'Gallery') { %>
+                <a href="/admin/gallery" class="nav__link active">
+                  <i class="uil uil-image nav__icon acti"></i>
+                  <span class="nav__name">Gallery</span>
+                </a>
+                <% } else {%>
+                <a href="/admin/gallery" class="nav__link">
+                  <i class="uil uil-image nav__icon"></i>
+                  <span class="nav__name">Gallery</span>
+                </a> 
+                <% } %>
+              <!----------------------------------------------------->
+
+              
+
+                  <!-- -----------------Contact Page----------------- -->
+                  <% if (title === 'Contact') { %>
+                    <a href="/admin/contact" class="nav__link active">
+                      <i class="uil uil-phone-alt nav__icon acti"></i>
+                      <span class="nav__name">Contact</span>
+                    </a>
+                    <% } else {%>
+                    <a href="/admin/contact" class="nav__link">
+                      <i class="uil uil-phone-alt nav__icon"></i>
+                      <span class="nav__name">Contact</span>
+                    </a> 
+                    <% } %>
+                  <!----------------------------------------------------->
+               <!-- -----------------Signup Page----------------- -->
+               <% if (title === 'Signup') { %>
+                <a href="/admin/signup" class="nav__link active">
+                  <i class="uil uil-signin nav__icon acti"></i>
+                  <span class="nav__name">Signup</span>
+                </a>
+                <% } else {%>
+                <a href="/admin/signup" class="nav__link">
+                  <i class="uil uil-signin nav__icon"></i>
+                  <span class="nav__name">Signup</span>
+                </a> 
+                <% } %>
+              <!----------------------------------------------------->
+
+               <!-- -----------------Logout Page----------------- -->
+            
+                <a href="/admin/logout" onclick="return confirm('Are you sure you want to Log out?');" class="nav__link">
+                  <i class="uil uil-signout nav__icon"></i>
+                  <span class="nav__name">Logout</span>
+                </a> 
+            
+              <!----------------------------------------------------->
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

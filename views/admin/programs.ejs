@@ -1,0 +1,81 @@
+<%- include('../partials/header_admin'); -%>
+
+<button class="add__button button--flexs services__button">
+  Add Program<img src="/img/add.png" alt="" class="add__icon" />
+</button>
+
+<div class="services__modal">
+  <div class="services__modal-content">
+    <i class="uil uil-times services__modal-close"></i>
+
+    <section class="ccontact csection" id="ccontact">
+      <h2 class="asection__title">Add new program</h2>
+      <span class="asection__subtitle">*all the input fields are required</span>
+      <div class="ccontact__container ccontainer cgrid">
+        <form
+          action="/admin/programs"
+          enctype="multipart/form-data"
+          method="POST"
+          class="ccontact__form grid"
+        >
+          <div class="ccontact__content">
+            <label for="" class="ccontact__label">Link</label>
+            <textarea
+              name="link"
+              cols="0"
+              rows="5"
+              class="ccontact__input"
+            ></textarea>
+          </div>
+          <div>
+            <input
+              type="file"
+              class="form-control"
+              name="images"
+              id="formFile"
+              multiple
+            /><br />
+          </div>
+          <div>
+            <input type="submit" class="cbutton cbutton--flex" value="Done" />
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<table id="JavaScriptTable">
+  <tr>
+    <th>Image</th>
+    <th>Link</th>
+    <th>Action</th>
+  </tr>
+
+  <% if (program.length > 0) { %> <% for(let i =0; i < program.length; i++){ %>
+
+  <tr>
+    <td>
+      <img
+        src="data:<%=program[i].contentType%>;base64,<%=program[i].imageBase64%>"
+        alt="<%= program[i].filename %>"
+        width="100%"
+        class="program__img"
+      />
+    </td>
+    <td><%= program[i].link %></td>
+    <td>
+      <a class="single" href="/admin/programs/settings/<%= program[i]._id %>">
+        <i class="uil uil-edit set__icon"></i>
+      </a>
+    </td>
+  </tr>
+
+  <% } %> <% } else { %>
+  <tr>
+    <td class="centre" colspan="3">There are no program to display...</td>
+  </tr>
+  <% } %>
+</table>
+
+<%-include('../partials/footer_admin'); -%>

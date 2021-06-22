@@ -1,0 +1,59 @@
+<div class="containerss">
+  <div class="navbarss">
+    <h2 class="bold"><a href="">caloocan</a></h2>
+    <nav>
+      <ul id="menuList">
+        <% if (title === 'Home') { %>
+        <li>
+          <a href="/barangay73caloocan-official-website" class="activess"
+            >Home</a
+          >
+        </li>
+        <% } else {%>
+        <li><a href="/barangay73caloocan-official-website"> Home </a></li>
+        <% } %> <% if (title === 'Profile') { %>
+        <li>
+          <a href="/barangay73caloocan-barangay-officials" class="activess"
+            >Profile</a
+          >
+        </li>
+        <% } else {%>
+        <li><a href="/barangay73caloocan-barangay-officials">Profile</a></li>
+        <% } %> <% if (title === 'Gallery') { %>
+        <li>
+          <a href="/barangay73caloocan-gallery" class="activess">Gallery</a>
+        </li>
+        <% } else {%>
+        <li><a href="/barangay73caloocan-gallery">Gallery</a></li>
+        <% } %> <% if (title === 'Contact') { %>
+        <li>
+          <a href="/barangay73caloocan-contact" class="activess">Contact</a>
+        </li>
+        <% } else {%>
+        <li><a href="/barangay73caloocan-contact">Contact</a></li>
+        <% } %>
+      </ul>
+    </nav>
+
+    <img
+      src="/img/menu.png"
+      alt=""
+      class="menu-iconss"
+      onclick="togglemenu()"
+    />
+  </div>
+
+  <img src="/img/logoo.png" class="logoo" alt="" />
+
+  <script>
+    var menuList = document.getElementById("menuList");
+    menuList.style.maxHeight = "0px";
+    function togglemenu() {
+      if (menuList.style.maxHeight == "0px") {
+        menuList.style.maxHeight = "190px";
+      } else {
+        menuList.style.maxHeight = "0px";
+      }
+    }
+  </script>
+</div>

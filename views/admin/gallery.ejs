@@ -1,0 +1,81 @@
+<%- include('../partials/header_admin'); -%>
+
+<button class="add__button button--flexs services__button">
+  Add Image<img src="/img/add.png" alt="" class="add__icon" />
+</button>
+
+<div class="services__modal">
+  <div class="services__modal-content">
+    <i class="uil uil-times services__modal-close"></i>
+
+    <section class="ccontact csection" id="ccontact">
+      <h2 class="asection__title">Add new image</h2>
+      <span class="asection__subtitle">*all the input fields are required</span>
+      <div class="ccontact__container ccontainer cgrid">
+        <form
+          action="/admin/gallery"
+          enctype="multipart/form-data"
+          method="POST"
+          class="ccontact__form grid"
+        >
+          <div class="ccontact__content">
+            <label for="categories" class="ccontact__label">Category:</label>
+            <select class="ccontact__input" name="category">
+              <option value=""></option>
+              <option value="Events">Events</option>
+              <option value="Announcement">Announcement</option>
+            </select>
+          </div>
+
+          <div>
+            <input
+              type="file"
+              class="form-control"
+              name="images"
+              id="formFile"
+              multiple
+            /><br />
+          </div>
+          <div>
+            <input type="submit" class="cbutton cbutton--flex" value="Done" />
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<table id="JavaScriptTable">
+  <tr>
+    <th>Image</th>
+    <th>Category</th>
+    <th>Action</th>
+  </tr>
+
+  <% if (gallery.length > 0) { %> <% for(let i =0; i < gallery.length; i++){ %>
+
+  <tr>
+    <td>
+      <img
+        src="data:<%=gallery[i].contentType%>;base64,<%=gallery[i].imageBase64%>"
+        alt="<%= gallery[i].filename %>"
+        width="100%"
+        class="program__img"
+      />
+    </td>
+    <td><%= gallery[i].category %></td>
+    <td>
+      <a class="single">
+        <i class="uil uil-trash-alt set__icon"></i>
+      </a>
+    </td>
+  </tr>
+
+  <% } %> <% } else { %>
+  <tr>
+    <td class="centre" colspan="3">There are no images to display...</td>
+  </tr>
+  <% } %>
+</table>
+
+<%-include('../partials/footer_admin'); -%>

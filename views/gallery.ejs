@@ -1,0 +1,93 @@
+<%- include('partials/header'); -%> <%- include('partials/nav'); -%>
+<h1 id="Header__Profile">Bayanihan Program</h1>
+<div class="wrap">
+  <!-- filter Items -->
+
+  <nav>
+    <div class="items">
+      <span class="item active" data-name="all">All</span>
+      <span class="item" data-name="Events">Events</span>
+      <span class="item" data-name="Announcement">Announcement</span>
+    </div>
+  </nav>
+  <!-- filter Images -->
+  <div class="gallery">
+    <% if (gallery.length > 0) { %> <% for(let i =0; i < gallery.length; i++){
+    %>
+
+    <div class="image" data-name="<%= gallery[i].category %>">
+      <span
+        ><img
+          src="data:<%=gallery[i].contentType%>;base64,<%=gallery[i].imageBase64%>"
+          alt="<%= gallery[i].filename %>"
+      /></span>
+    </div>
+    <% } %> <% } else { %>
+    <h1>There are no images to display...</h1>
+    <% } %>
+  </div>
+</div>
+
+<!-- fullscreen img preview bjox -->
+<div class="preview-box">
+  <div class="details">
+    <span class="title"
+      >Category:
+      <p></p
+    ></span>
+    <span class="icon fas fa-times"></span>
+  </div>
+  <div class="image-box"><img src="" alt="" /></div>
+</div>
+<div class="shadow"></div>
+
+<script>
+  const filterItem = document.querySelector(".items");
+  const filterImg = document.querySelectorAll(".gallery .image");
+
+  window.onload = () => {
+    filterItem.onclick = (selectedItem) => {
+      if (selectedItem.target.classList.contains("item")) {
+        filterItem.querySelector(".active").classList.remove("active");
+        selectedItem.target.classList.add("active");
+        let filterName = selectedItem.target.getAttribute("data-name");
+        filterImg.forEach((image) => {
+          let filterImges = image.getAttribute("data-name");
+
+          if (filterImges == filterName || filterName == "all") {
+            image.classList.remove("hide");
+            image.classList.add("show");
+          } else {
+            image.classList.add("hide");
+            image.classList.remove("show");
+          }
+        });
+      }
+    };
+    for (let i = 0; i < filterImg.length; i++) {
+      filterImg[i].setAttribute("onclick", "preview(this)");
+    }
+  };
+
+  const previewBox = document.querySelector(".preview-box"),
+    categoryName = previewBox.querySelector(".title p"),
+    previewImg = previewBox.querySelector("img"),
+    closeIcon = previewBox.querySelector(".icon"),
+    shadow = document.querySelector(".shadow");
+
+  function preview(element) {
+    document.querySelector("body").style.overflow = "hidden";
+    let selectedPrevImg = element.querySelector("img").src;
+    let selectedImgCategory = element.getAttribute("data-name");
+    previewImg.src = selectedPrevImg;
+    categoryName.textContent = selectedImgCategory;
+    previewBox.classList.add("show");
+    shadow.classList.add("show");
+    closeIcon.onclick = () => {
+      previewBox.classList.remove("show");
+      shadow.classList.remove("show");
+      document.querySelector("body").style.overflow = "auto";
+    };
+  }
+</script>
+<%- include('partials/footer'); -%>
