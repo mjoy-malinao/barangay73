@@ -149,6 +149,17 @@ nav ul li :hover {
 }
 
 /*------------------End Navigation------------------*/
+/*------------------Start Home page------------------*/
+/* news */
+.imgfornews {
+  position: relative;
+  width: 75%;
+  max-height: 500px;
+
+  overflow: hidden;
+  justify-content: center;
+}
+
 .slider {
   position: relative;
   background: #000116;
@@ -238,6 +249,10 @@ nav ul li :hover {
     width: 100%;
     margin-left: 0;
   }
+  .imgfornews {
+    width: 100%;
+    margin-left: 0;
+  }
   .bg {
     padding-left: 0%;
   }
@@ -284,15 +299,10 @@ h1 {
 h3 {
   font-size: 1.3rem;
 }
-
-button.btn {
-  border: none;
-  border-radius: 2rem;
-  padding: 1rem 3rem;
-  font-size: 1rem;
-  cursor: pointer;
+.hash {
+  font-size: 2rem;
+  font-weight: 400;
 }
-
 .container {
   margin: 100px 19vw;
   font-size: 20px;
@@ -302,12 +312,8 @@ button.btn {
   color: var(--text-gray);
 }
 
-p {
-  color: var(--text-light);
-}
-
 /* ------x------- Global Classes -------x-------*/
-/* ---------------- Site Content ----------------*/
+/* ---------------- Home Page ----------------*/
 
 .site-content {
   display: grid;
@@ -332,14 +338,25 @@ p {
   left: 15vw;
   border-radius: 3rem;
 }
-
+.post-title p {
+  margin-bottom: 30px;
+  margin-top: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 .site-content .post-content > .post-image > div {
   overflow: hidden;
 }
 
 .site-content .post-content > .post-image .img {
+  max-height: 400px;
   width: 100%;
   transition: all 1s ease;
+  margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .site-content .post-content > .post-image .img:hover {
@@ -351,13 +368,9 @@ p {
 }
 
 .post-content .post-title a {
-  font-size: 1.5rem;
-}
+  margin-top: 20px;
 
-.site-content .post-content .post-title .post-btn {
-  border-radius: 0;
-  padding: 0.7rem 1.5rem;
-  background: var(--sky);
+  font-size: 1.5rem;
 }
 
 .site-content .pagination {
@@ -377,30 +390,18 @@ p {
   color: var(--white);
 }
 
-/* -------x-------- Site Content --------x-------*/
+/* -------x-------- End Page --------x-------*/
 
 /* --------------- Sidebar ----------------------- */
-
-.site-content > .sidebar .category-list .list-items {
-  background: var(--sky);
-  padding: 0.4rem 1rem;
-  margin: 0.8rem 0;
-  border-radius: 3rem;
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.site-content > .sidebar .category-list .list-items a {
-  color: black;
-}
 
 .site-content .sidebar .popular-post .post-content {
   padding: 1rem 0;
 }
 
 .site-content .sidebar .popular-post h2 {
-  padding-top: 8rem;
+  padding-top: 4.5rem;
+  padding-left: 2rem;
+  font-weight: 600;
 }
 
 .site-content .sidebar .popular-post .post-info {
@@ -409,10 +410,6 @@ p {
   left: 1rem !important;
   border-radius: 0rem !important;
   background: white !important;
-}
-
-.site-content .sidebar .popular-post .post-title a {
-  font-size: 1rem;
 }
 
 .site-content .sidebar .newsletter {
@@ -791,10 +788,10 @@ td {
   height: 180px;
 }
 
-button.btn {
+a.btn {
   background: #ff6007;
-  width: 200px;
-  padding: 10px 0;
+  width: 250px;
+  padding: 1rem 3rem;
   border-radius: 5px;
   text-align: center;
   color: #fff;
@@ -990,3 +987,107 @@ button.loginy {
   font-weight: bold;
 }
 /*------------------- End Login Page -------------------*/
+
+/*------------------- Start News Page -------------------*/
+
+.blog-post-content h1 {
+  margin-top: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 50px;
+  font-weight: 400;
+}
+.blog-post-content p {
+  font-size: 18px;
+}
+.font2 h2 {
+  margin-top: 100px;
+  font-size: 25px;
+  font-weight: 400;
+  margin-left: 175px;
+  margin-bottom: 50px;
+}
+.row {
+  display: flex;
+  justify-content: center;
+}
+.more-post {
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-articles {
+  padding: 18px;
+
+  margin-top: 23px;
+  position: relative;
+}
+.home-article {
+  display: flex;
+  margin: 25px;
+}
+
+.home-article img {
+  width: 300px;
+}
+
+.home-article-content {
+  align-self: center;
+  padding: 25px;
+}
+
+.home-article-content a {
+  text-decoration: none;
+  color: black;
+}
+
+.home-article-content a {
+  text-decoration: none;
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+.max-width-1 {
+  max-width: 80vw;
+}
+
+.max-width-2 {
+  max-width: 60vw;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.mx-1 {
+  margin-left: 23px;
+  margin-right: 23px;
+}
+
+.my-2 {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+@media screen and (max-width: 1200px) {
+  .home-article {
+    flex-direction: column;
+  }
+
+  .home-article-img {
+    text-align: center;
+  }
+
+  .home-article img {
+    width: 70vw;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+}
+
+/*------------------- End News Page -------------------*/

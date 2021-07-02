@@ -1,0 +1,49 @@
+<%- include('partials/header'); -%> <%- include('partials/nav'); -%>
+<div class="bg">
+  <img
+    src="data:<%=news_info.contentType%>;base64,<%=news_info.imageBase64%>"
+    class="imgfornews"
+    alt="<%= news_info.filename %>"
+  />
+</div>
+
+<div class="m-auto blog-post-content max-width-2 m-auto my-2">
+  <h1 class="font1"><%= news_info.hashtag %></h1>
+
+  <p class="font1"><%= news_info.information %></p>
+</div>
+
+<div class="max-width-1 m-auto"><hr /></div>
+<div class="home-articles max-width-1 m-auto font2">
+  <h2>People who read this also read</h2>
+  <div class="row">
+
+    <% if (news.length > 0) { %> <% for(let i =0; i < 3; i++){ %>
+    <div class="home-article more-post">
+      <div class="home-article-img">
+        <a href="/barangay73caloocan-official-website/<%= news[i]._id %>"
+            > <img
+    src="data:<%=news[i].contentType%>;base64,<%=news[i].imageBase64%>"
+    class="imgfornews"
+    alt="<%= news[i].filename %>"
+  /></a
+  >
+      </div>
+      <div class="home-article-content font1 center">
+        <a href="/barangay73caloocan-official-website/<%= news[i]._id %>"
+          ><h3 class="hash">
+            <%= news[i].hashtag%>
+          </h3></a
+        >
+      </div>
+    </div>
+    <% } %> <% } else { %>
+           
+        <p></p>
+      </div>
+      <% } %>
+
+  </div>
+</div>
+
+<%-include('partials/footer'); -%>

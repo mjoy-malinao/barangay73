@@ -4,6 +4,7 @@ const client = require("../controllers/client_c");
 
 /*-----------------Home Page-----------------*/
 router.get("/barangay73caloocan-official-website", client.get_home);
+router.get("/barangay73caloocan-official-website/:id", client.get_news);
 
 /*-------------------------------------------------*/
 

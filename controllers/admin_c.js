@@ -3,6 +3,7 @@ const Program = require("../models/programs");
 const Gallery = require("../models/gallery");
 const Contact = require("../models/contact");
 const User = require("../models/User");
+const News = require("../models/news");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 
@@ -48,6 +49,90 @@ const createToken = (id) => {
   });
 };
 
+/*-----------------News Page-----------------*/
+
+//Get
+exports.get_news = async (req, res) => {
+  const n = await News.find();
+  res.render("admin/news", {
+    news: n,
+    title: "News",
+  });
+};
+
+//Post ----> Create new news
+exports.post_news = (req, res, next) => {
+  const files = req.files;
+
+  if (!files) {
+    const error = new Error("Please choose files");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+
+  let imgArray = files.map((file) => {
+    let img = fs.readFileSync(file.path);
+
+    return (encode_image = img.toString("base64"));
+  });
+
+  let result = imgArray.map((src, index) => {
+    let finalImg = {
+      filename: files[index].originalname,
+      contentType: files[index].mimetype,
+      imageBase64: src,
+      category: req.body.category,
+      hashtag: req.body.hashtag,
+      information: req.body.information,
+    };
+
+    let newUpload = new News(finalImg);
+
+    return newUpload
+      .save()
+      .then(() => {
+        return {
+          msg: `${files[index].originalname} Uploaded Successfully...!`,
+        };
+      })
+      .catch((error) => {
+        if (error) {
+          if (error.name === "MongoError" && error.code === 11000) {
+            return Promise.reject({
+              error: `Duplicate ${files[index].originalname}. File Already exists! `,
+            });
+          }
+          return Promise.reject({
+            error:
+              error.message ||
+              `Cannot Upload ${files[index].originalname} Something Missing!`,
+          });
+        }
+      });
+  });
+
+  Promise.all(result)
+    .then((msg) => {
+      res.redirect("/admin/news");
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
+
+//Delete
+exports.delete_news = (req, res) => {
+  News.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+      res.redirect("/admin/news");
+    } else {
+      console.log("Error in program delete :" + err);
+    }
+  });
+};
+
+/*-------------------------------------------------*/
+
 /*-----------------Profile Page-----------------*/
 
 //Get
@@ -75,6 +160,7 @@ exports.post_profiles = async (req, res, next) => {
     res.status(400).json(err);
   }
 };
+
 /*-------------------------------------------------*/
 
 /*-----------------Profile Settings Page-----------------*/
@@ -211,29 +297,6 @@ exports.get_prog_settings = (req, res) => {
   });
 };
 
-//Get Update
-exports.get_prog_update_settings = (req, res) => {
-  res.render("admin/settings_prog", {
-    title: "Program Settings",
-  });
-};
-
-//Post Update
-exports.post_prog_update_settings = (req, res) => {
-  Program.findOneAndUpdate(
-    { _id: req.body._id },
-    req.body,
-    { new: true },
-    (err, doc) => {
-      if (!err) {
-        res.redirect("/admin/programs");
-      } else {
-        console.log("Error during record update :");
-      }
-    }
-  );
-};
-
 //Delete
 exports.prog_delete_settings = (req, res) => {
   Program.findByIdAndRemove(req.params.id, (err, doc) => {
@@ -319,16 +382,15 @@ exports.post_gallery = (req, res, next) => {
 
 /*-----------------Gallery Settings Page-----------------*/
 //Delete
-// exports.gallery_delete_settings = (req, res) => {
-//   console.log(req.body._id);
-//   // Program.findByIdAndRemove(req.body.id, (err, doc) => {
-//   //   if (!err) {
-//   //     res.redirect("/admin/programs");
-//   //   } else {
-//   //     console.log("Error in program delete :" + err);
-//   //   }
-//   // });
-// };
+exports.gallery_delete_settings = (req, res) => {
+  Gallery.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+      res.redirect("/admin/gallery");
+    } else {
+      console.log("Error in image delete :" + err);
+    }
+  });
+};
 // /*-------------------------------------------------*/
 
 /*-----------------Signin & Signup Page-----------------*/

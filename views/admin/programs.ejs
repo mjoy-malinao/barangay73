@@ -65,9 +65,12 @@
     </td>
     <td><%= program[i].link %></td>
     <td>
-      <a class="single" href="/admin/programs/settings/<%= program[i]._id %>">
-        <i class="uil uil-edit set__icon"></i>
-      </a>
+      <a
+        class="single"
+        href="/admin/programs/settings/delete/<%= program[i]._id %>"
+        onclick="return confirm('Are you sure to delete this record ?');"
+        ><i class="uil uil-trash-alt set__icon"></i
+      ></a>
     </td>
   </tr>
 

@@ -65,7 +65,12 @@
     </td>
     <td><%= gallery[i].category %></td>
     <td>
-      <a class="single">
+      <a
+        name="_id"
+        class="single"
+        href="/admin/gallery/delete/<%= gallery[i]._id %>"
+        onclick="return confirm('Are you sure to delete this record ?');"
+      >
         <i class="uil uil-trash-alt set__icon"></i>
       </a>
     </td>

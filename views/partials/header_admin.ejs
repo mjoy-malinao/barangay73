@@ -26,7 +26,7 @@
   <body id="body-pd">
     <header class="header" id="header">
       <div class="header__toggle">
-        <i class="uil uil-list-ul" id="header-toggle"></i>
+        <i class="uil uil-list-ul mem" id="header-toggle"></i>
 
       </div>
       <h3 class="hed"><%= user.email %></h3>
@@ -57,6 +57,20 @@
             </a> 
             <% } %>
            <!----------------------------------------------------->
+
+              <!-- -----------------News Page----------------- -->
+              <% if (title === 'News') { %>
+                <a href="/admin/news" class="nav__link active">
+                  <i class="uil uil-newspaper nav__icon acti"></i>
+                  <span class="nav__name">News</span>
+                </a>
+                <% } else {%>
+                <a href="/admin/news" class="nav__link">
+                  <i class="uil uil-newspaper nav__icon"></i>
+                  <span class="nav__name">News</span>
+                </a> 
+                <% } %>
+              <!----------------------------------------------------->
 
            <!-- -----------------Program Page----------------- -->
             <% if (title === 'Programs') { %>

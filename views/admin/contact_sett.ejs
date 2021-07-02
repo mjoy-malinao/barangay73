@@ -1,20 +1,34 @@
 <%- include('../partials/header_admin'); -%>
 
-<div class="banner">
-  <div class="app-text">
-    <h3><%= contact_info.name %></h3>
-    <h3><%= contact_info.email %></h3>
-    <h3><%= contact_info.contact %></h3>
+
+
+<div class="wrappers123">
+  <header>Contact Details</header>
+
+
+  <nav>
+
+
+  <section>
+    <div class="contentss">
+      <div class="wrappersss">
+      
+
+    <h3>Name: <%= contact_info.name %></h3>
+    <h3>Email: <%= contact_info.email %></h3>
+    <h3>Phone no.: <%= contact_info.contact %></h3>
 
     <% if (contact_info.subject === "") { %>
 
-    <h1>--------</h1>
+    <h3>Message: N/A</h3>
     <p></p>
     <% } else { %>
-    <h1><%= contact_info.subject %></h1>
-    <p><%= contact_info.message %></p>
+    <h3>Subject: <%= contact_info.subject %></h3>
+    <p>Message: <%= contact_info.message %></p>
     <% } %>
-  </div>
-</div>
 
+      </div>
+    </div>
+  </section>
+</div>
 <%-include('../partials/footer_admin'); -%>

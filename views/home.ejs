@@ -1,132 +1,106 @@
-<%- include('partials/header'); -%> <%- include('partials/nav'); -%> 
+<%- include('partials/header'); -%> <%- include('partials/nav'); -%>
 <div class="bg">
-<div class="slider">
-  <div class="slide active">
-    <img src="/img/1.jpg" alt="" />
-    <div class="info">
-      <h2>Winter Mountains</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+  <div class="slider">
+    <div class="slide active">
+      <img src="/img/1.jpg" alt="" />
+    </div>
+    <div class="slide">
+      <img src="/img/2.jpg" alt="" />
+    </div>
+    <div class="slide">
+      <img src="/img/3.jpg" alt="" />
+    </div>
+    <div class="slide">
+      <img src="/img/4.jpg" alt="" />
+    </div>
+    <div class="slide">
+      <img src="/img/5.jpg" alt="" />
+    </div>
+    <div class="navigation">
+      <i class="fas fa-chevron-left prev-btn"></i>
+      <i class="fas fa-chevron-right next-btn"></i>
+    </div>
+    <div class="navigation-visibility">
+      <div class="slide-icon active"></div>
+      <div class="slide-icon"></div>
+      <div class="slide-icon"></div>
+      <div class="slide-icon"></div>
+      <div class="slide-icon"></div>
     </div>
   </div>
-  <div class="slide">
-    <img src="/img/2.jpg" alt="" />
-  
-  </div>
-  <div class="slide">
-    <img src="/img/3.jpg" alt="" />
-
-  </div>
-  <div class="slide">
-    <img src="/img/4.jpg" alt="" />
-
-  </div>
-  <div class="slide">
-    <img src="/img/5.jpg" alt="" />
-
-  </div>
-  <div class="navigation">
-    <i class="fas fa-chevron-left prev-btn"></i>
-    <i class="fas fa-chevron-right next-btn"></i>
-  </div>
-  <div class="navigation-visibility">
-    <div class="slide-icon active"></div>
-    <div class="slide-icon"></div>
-    <div class="slide-icon"></div>
-    <div class="slide-icon"></div>
-    <div class="slide-icon"></div>
-  </div>
 </div>
-</div>
-<!-- ---------------------- Site Content -------------------------->
+
 <section class="container">
   <div class="site-content">
     <div class="posts">
+      <% if (news.length > 0) { %> <% for(let i =0; i < news.length; i++){ %>
+
       <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
         <div class="post-image">
           <div>
-            <img src="./img/oplan.png" class="img" alt="oplan" />
-          </div>
-          <div class="post-info flex-row">
-            <span
-              ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;Tuesday</span
-            >
-            <span
-              ></i>&nbsp;&nbsp;July 14,
-              2020</span
-            >
+            <a href="/barangay73caloocan-official-website/<%= news[i]._id %>">
+              <img
+                src="data:<%=news[i].contentType%>;base64,<%=news[i].imageBase64%>"
+                class="img"
+                alt="<%= news[i].filename %>"
+            /></a>
           </div>
         </div>
         <div class="post-title">
-          <a href="#">#LabanCaloocanKontraCovid19</a>
-          <p>
-            Mahigpit na ipinatutupad ng ating kapulisan ang total lockdown sa
-            Barangay 93.
-          </p>
-       
+          <a href="/barangay73caloocan-official-website/<%= news[i]._id %>"
+            >#<%= news[i].hashtag %></a
+          >
+          <p><%= news[i].information %></p>
+          <a
+            href="/barangay73caloocan-official-website/<%= news[i]._id %>"
+            class="btn post-btn"
+          >
+            Read More &nbsp; <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
       </div>
       <hr />
+
+      <% } %> <% } else { %>
+
+      <div class="post-title">
+        <a href="#"></a>
+        <p>There are no news to display...</p>
+      </div>
+      <% } %>
+      <hr />
     </div>
     <aside class="sidebar">
-      <div class="category">
-        <h2>Category</h2>
-        <ul class="category-list">
-          <li class="list-items" data-aos="fade-left" data-aos-delay="100">
-            <a href="#">Education</a>
-            <span>(05)</span>
-          </li>
-          <li class="list-items" data-aos="fade-left" data-aos-delay="200">
-            <a href="#">Political</a>
-            <span>(02)</span>
-          </li>
-          <li class="list-items" data-aos="fade-left" data-aos-delay="300">
-            <a href="#">Health</a>
-            <span>(07)</span>
-          </li>
-          <li class="list-items" data-aos="fade-left" data-aos-delay="400">
-            <a href="#">Economic</a>
-            <span>(01)</span>
-          </li>
-          <li class="list-items" data-aos="fade-left" data-aos-delay="500">
-            <a href="#">Religion</a>
-            <span>(08)</span>
-          </li>
-        </ul>
-      </div>
-
-     
       <div class="popular-post">
         <h2>Program</h2>
 
-        <% if (program.length > 0) { %> <% for(let i =0; i < program.length; i++){ %>
+        <% if (program.length > 0) { %> <% for(let i =0; i < program.length;
+        i++){ %>
         <div class="post-content" data-aos="flip-up" data-aos-delay="200">
           <div class="post-image">
-              <div>
-                <a href="<%= program[i].link %>"><img src="data:<%=program[i].contentType%>;base64,<%=program[i].imageBase64%>"  alt="<%= program[i].filename %>" class="img" alt="blog1" /></a>       
-              </div> 
-          </div> 
-      </div>
-
-         <% } %> <% } else { %>
-
-          <div class="post-title">
-            <a href="#">New data recording system to better analyse road accidents</a>
+            <div>
+              <a href="<%= program[i].link %>"
+                ><img
+                  src="data:<%=program[i].contentType%>;base64,<%=program[i].imageBase64%>"
+                  alt="<%= program[i].filename %>"
+                  class="img"
+                  alt="blog1"
+              /></a>
+            </div>
           </div>
+        </div>
+
+        <% } %> <% } else { %>
+
+        <div class="post-title">
+          <a href="#">There is no Program record...</a>
+        </div>
 
         <% } %>
-
       </div>
-
-  
     </aside>
   </div>
 </section>
-
-<!-- -----------x---------- Site Content -------------x------------>
-
 <script type="text/javascript">
   const slider = document.querySelector(".slider");
   const nextBtn = document.querySelector(".next-btn");
@@ -208,5 +182,4 @@
     repeater();
   });
 </script>
-
 <%-include('partials/footer'); -%>

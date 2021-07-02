@@ -58,12 +58,12 @@ a {
 }
 
 h3.hed,
-.uil {
+.mem {
   color: #0a0808;
   font-size: 1rem;
   cursor: pointer;
 }
-.uil {
+.mem {
   font-size: 2rem;
 }
 .header__img2 {
@@ -170,7 +170,7 @@ h3.hed,
 }
 
 .set__icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-left: 2rem;
   cursor: pointer;
 }
@@ -470,7 +470,6 @@ tr:nth-child(even) {
   .cmain {
     padding: 0;
   }
-
   .ccontact__form {
     width: 460px;
   }
@@ -853,10 +852,30 @@ section .content p {
 /*------------------- End Settings Page -------------------*/
 
 /*------------------- Start Signup Page -------------------*/
+
+form.formy2 h2 {
+  font-size: 3em;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
 form.formy h2 {
   font-size: 4em;
   font-weight: 900;
   margin-bottom: 40px;
+}
+
+form.formy2 {
+  width: 660px;
+  margin: auto;
+  padding: 30px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: white;
+  margin-top: 150px;
+  -moz-box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
 form.formy {
   width: 860px;
@@ -870,6 +889,13 @@ form.formy {
   -webkit-box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1);
   box-shadow: inset 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
+input.inputy2 {
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 2em;
+  width: 100%;
+}
 input.inputy {
   padding: 10px 12px;
   border-radius: 4px;
@@ -877,10 +903,28 @@ input.inputy {
   font-size: 2.5em;
   width: 100%;
 }
+label.labely2 {
+  display: block;
+  margin: 20px 0 10px;
+  font-size: 1.5em;
+}
 label.labely {
   display: block;
   margin: 20px 0 10px;
   font-size: 2em;
+}
+button.loginy2 {
+  margin-top: 30px;
+  border-radius: 10px;
+  background: #ff6007;
+  border: 0;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
 }
 button.loginy {
   margin-top: 30px;
@@ -903,40 +947,34 @@ button.loginy {
 }
 /*------------------- End Signup Page -------------------*/
 /*------------------- Start Contact Settings Page -------------------*/
-.banner {
-  color: rgb(8, 8, 8);
-  margin: 220px 650px;
-  width: 100%;
-  height: 100%;
-}
-
-.app-text {
-  width: 50%;
-  float: left;
-}
-
-.app-text h3 {
-  font-size: 17px;
-  color: #000;
+.wrappers123 header {
+  font-size: 30px;
   font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+
+  margin-top: 20px;
 }
 
-.app-text h1 {
-  font-size: 51px;
-  position: relative;
-  color: #000;
-  margin-top: 30px;
-  font-weight: 700;
-  line-height: 1;
+section .contentss {
+  background: #fff;
 }
 
-.app-text p {
-  font-size: 19px;
-  margin: 30px 30px 30px 0;
-  letter-spacing: 1px;
-  color: #000;
-  padding-right: 250px;
+.contentss .wrappersss h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+.wrappersss {
+  width: 100%;
+  background: #fff;
+
+  padding: 30px;
+}
+.wrappers123 {
+  max-width: 900px;
+  width: 100%;
+  margin: 200px auto;
+  padding: 25px 30px 30px 30px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 10px 10px 10px 10px rgba(12, 11, 11, 0.1);
 }
 /*------------------- End Contact Settings Page -------------------*/

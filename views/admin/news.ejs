@@ -1,0 +1,113 @@
+<%- include('../partials/header_admin'); -%>
+
+<button class="add__button button--flexs services__button">
+  Add Member<img src="/img/add.png" alt="" class="add__icon" />
+</button>
+
+<div class="services__modal">
+  <div class="services__modal-content">
+    <i class="uil uil-times services__modal-close"></i>
+
+    <section class="ccontact csection" id="ccontact">
+      <h2 class="asection__title">Add new news</h2>
+      <span class="asection__subtitle">*all the input fields are required</span>
+      <div class="ccontact__container ccontainer cgrid">
+        <form
+        action="/admin/news"
+        enctype="multipart/form-data"
+        method="POST"
+        class="ccontact__form grid"
+        >
+          <div class="ccontact__inputs cgrid">
+            <div class="ccontact__content">
+              <label for="" class="ccontact__label">Title</label>
+              <input type="text" name="hashtag" class="ccontact__input" />
+            </div>
+
+            <div class="ccontact__content">
+                <label for="categories" class="ccontact__label"
+                >Category:</label
+              >
+              <select class="ccontact__input" name="category">
+                <option value=""></option>
+                <option value="Education">Education</option>
+                <option value="Political">Political</option>
+                <option value="Health">Health</option>
+                <option value="Economic">Economic</option>
+                <option value="Religion">Religion</option>
+              </select>
+              </div> 
+          </div>
+         
+          <div class="ccontact__content">
+            <label for="" class="ccontact__label">Information</label>
+            <textarea
+              name="information"
+              cols="0"
+              rows="5"
+              class="ccontact__input"
+            ></textarea>
+          </div>
+          <input
+              type="file"
+              class="form-control"
+              name="images"
+              id="formFile"
+              multiple
+            /><br />
+        </div>
+           
+    
+
+          <div>
+            <input type="submit" class="cbutton cbutton--flex" value="Done" />
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<table id="JavaScriptTable">
+  <tr>
+
+    <th>Image</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Action</th>
+
+  </tr>
+
+  <% if (news.length > 0) { %> <% for(let i =0; i < news.length; i++){ %>
+
+  <tr>
+    <td><img
+        src="data:<%=news[i].contentType%>;base64,<%=news[i].imageBase64%>"
+        alt="<%= news[i].filename %>"
+        width="100%"
+        class="program__img"
+      /></td>
+    <td><%= news[i].category %></td>
+    <td><%= news[i].hashtag %></td> 
+    <td>
+
+    <a
+    class="single"
+    href="/admin/news/delete/<%= news[i]._id %>"
+    onclick="return confirm('Are you sure to delete this record ?');"
+    ><i class="uil uil-trash-alt set__icon"></i></a>
+
+    </td>
+  </tr>
+
+  <% } %> <% } else { %>
+  <tr>
+    <td class="centre" colspan="5">There are no news to display...</td>
+  </tr>
+  <% } %>
+</table>
+
+
+
+
+ <%-include('../partials/footer_admin'); -%>

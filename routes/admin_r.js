@@ -4,6 +4,20 @@ const admin = require("../controllers/admin_c");
 const store = require("../middleware/multer");
 const { requireAuth, checkUser } = require("../middleware/authMiddleware");
 
+/*-----------------Home Page-----------------*/
+router.get("/admin/news", checkUser, requireAuth, admin.get_news);
+router.post(
+  "/admin/news",
+  checkUser,
+  requireAuth,
+  store.array("images", 12),
+  admin.post_news
+);
+
+router.get("/admin/news/delete/:id", checkUser, requireAuth, admin.delete_news);
+
+/*-------------------------------------------------*/
+
 /*-----------------Profile Page-----------------*/
 router.get("/admin/profiles", checkUser, requireAuth, admin.get_profiles);
 router.post("/admin/profiles", checkUser, requireAuth, admin.post_profiles);
@@ -58,19 +72,6 @@ router.get(
 );
 
 router.get(
-  "/admin/programs/settings",
-  checkUser,
-  requireAuth,
-  admin.get_prog_update_settings
-);
-router.post(
-  "/admin/programs/settings",
-  checkUser,
-  requireAuth,
-  admin.post_prog_update_settings
-);
-
-router.get(
   "/admin/programs/settings/delete/:id",
   checkUser,
   requireAuth,
@@ -91,7 +92,12 @@ router.post(
 
 /*-----------------Gallery Settings Page-----------------*/
 
-//router.get("/admin/gallery/delete/:id", admin.gallery_delete_settings);
+router.get(
+  "/admin/gallery/delete/:id",
+  checkUser,
+  requireAuth,
+  admin.gallery_delete_settings
+);
 /*-------------------------------------------------*/
 
 /*-----------------Contact Page-----------------*/
